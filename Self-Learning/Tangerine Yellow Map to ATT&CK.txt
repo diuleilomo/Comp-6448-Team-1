@@ -1,0 +1,99 @@
+Ticket: 473822
+Incident: Tangerine Yellow
+Date: 2/15/2019 14:54:03
+Description: cmd.exe commands via Pineapple RAT
+Status: Assigned
+
+The following commands were collected via Sysmon following Pineapple RAT 
+execution on the beachhead box.
+
+// Discovery: T1016 System Network Configuration Discovery
+ipconfig /all
+arp -a
+
+echo %USERDOMAIN%\%USERNAME%
+
+// Discovery: T1007 System Service Discovery
+tasklist /v
+sc query
+
+// Discovery: T1082 System Information Discovery
+systeminfo
+
+// Discovery: T1087 Account Discovery
+net group "Domain Admins" /domain
+net user /domain
+net group "Domain Controllers" /domain
+netsh advfirewall show allprofiles
+
+// Discovery: T1049 System Network Connections Discovery
+netstat -ano
+
+
+©2019 The MITRE Corporation. ALL RIGHTS RESERVED  Approved for public release. Distribution unlimited 18-1528-43. 
+
+------------------------------------------------------------------------
+
+Ticket: 473845
+Incident: Tangerine Yellow
+Date: 2/16/2019 10:14:44
+Description: Pineapple RAT analysis
+Status: Assigned
+
+MD5 = dcf574b977e291e159b3efeddc9e5075
+SHA1 = bc50bfce0ad9753a6be7448e350a15c1b7f719cc
+SHA256 = 18548a48f2c30070dc3982bb04ab004a9491aa5c1933ad73a84c0de1d816cd13
+Filename = winspoo1.exe
+
+Analysis notes:
+
+// Command and Control: T1001 Data Obfuscation
+// Command and Control: T1094 Custom Command and Control Protocol
+C2 protocol is base64 encoded commands over https. The RAT beacons every 30 seconds
+requesting a command.
+
+So far the following commands have been discovered and analyzed:
+	
+    // Command And Control, Lateral Movement: T1105 Remote File Copy
+    UPLOAD file (upload a file server->client)
+	DOWNLOAD file (download a file client->server)
+
+    // Execution: T1059 Command-Line Interface
+	SHELL command (runs a command via cmd.exe)
+
+    // Execution: T1086 PowerShell
+	PSHELL command (runs a command via powershell.exe)
+	
+    // Execution: T1059 Command-Line Interface
+    EXEC path (executes a program at the path given via CreateProcess)
+	SLEEP n (skips n beacons)
+	
+
+
+Sandbox execution artifacts for winspoo1.exe
+
+Network traffic:
+10.1.1.1:12442 -> 8.8.8.8:53 (query A www.m1tre.org)
+8.8.8.8:53 -> 10.1.1.1:12442 (response A www.m1tre.org A 129.83.44.12)
+10.1.1.1:24123 -> 129.83.44.12:443
+129.83.44.12:443 -> 10.1.1.1:24123
+10.1.1.1:24123 -> 129.83.44.12:443
+129.83.44.12:443 -> 10.1.1.1:24123
+10.1.1.1:24123 -> 129.83.44.12:443
+129.83.44.12:443 -> 10.1.1.1:24123
+10.1.1.1:24123 -> 129.83.44.12:443
+129.83.44.12:443 -> 10.1.1.1:24123
+10.1.1.1:24123 -> 129.83.44.12:443
+129.83.44.12:443 -> 10.1.1.1:24123
+
+// Command And Control, Lateral Movement: T1105 Remote File Copy
+File activity:
+Copy C:\winspoo1.exe -> C:\Windows\System32\winspool.exe
+
+// Persistence: T1060 Registry Run Keys / Startup Folder
+Registry keys added:
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\winspool REG_SZ "C:\Windows\System32\winspool.exe"
+
+
+
+©2019 The MITRE Corporation. ALL RIGHTS RESERVED  Approved for public release. Distribution unlimited 18-1528-43. 
