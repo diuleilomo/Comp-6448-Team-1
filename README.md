@@ -27,7 +27,7 @@ This folder includes evidence of self-learning and improvement outside the scope
 - **[CTF writeups](https://github.com/thesherlock22/Comp-6448-Team-1/blob/master/Self-Learning/CTF%20Writeups.pdf)** for the challenges in week 2 which included some challenges from BSides 2019 that was written for self-learning and improvement purposes which can be used as an online learning and reference resource.
 
 ## Contribution
-* Alex (add pseudonym):
+* Alex (thesherlock22):
   * Notes
 * Andrew (ajaec):
   - ANU Breach Report
