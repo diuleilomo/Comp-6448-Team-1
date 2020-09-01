@@ -29,8 +29,11 @@ This folder includes evidence of self-learning and improvement outside the scope
 ## Contribution
 * Alex (add pseudonym):
   * Notes
-* Andrew (add pseudonym):
-  - contributions
+* Andrew (ajaec):
+  - ANU Breach Report
+  - CTF Writeups
+  - OilRig Exercise
+  - Sofacy IR Report
 * Elton (add pseudonym):
   - contributions
 * Lasindu (ecl1ipse): 
