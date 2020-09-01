@@ -28,7 +28,9 @@ This folder includes evidence of self-learning and improvement outside the scope
 
 ## Contribution
 * Alex (thesherlock22):
-  * Notes
+  - ANU Breach Report
+  - Sofacy IR Report
+  - Course notes
 * Andrew (ajaec):
   - ANU Breach Report
   - CTF Writeups
