@@ -33,6 +33,7 @@ This folder includes evidence of self-learning and improvement outside the scope
   - contributions
 * Elton (add pseudonym):
   - contributions
-* Lasindu (add pseudonym): 
-  - contributions
+* Lasindu (ecl1ipse): 
+  - ANU Breach Report
+  - Sofacy IR Report
 * Steven (add pseudonym):
