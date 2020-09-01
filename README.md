@@ -34,8 +34,9 @@ This folder includes evidence of self-learning and improvement outside the scope
   - CTF Writeups
   - OilRig Exercise
   - Sofacy IR Report
-* Elton (add pseudonym):
-  - contributions
+* Elton (diuleilomo):
+  - ANU Breach Report
+  - Sofacy IR Report
 * Lasindu (ecl1ipse): 
   - ANU Breach Report
   - Sofacy IR Report
